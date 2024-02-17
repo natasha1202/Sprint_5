@@ -31,6 +31,13 @@ class TestLocators:
     # Кнопка Начинки
     FILLINGS_TAB = By.XPATH, ".//span[contains(text(),'Начинки')]"
 
+    # Кнопка Булки
+    BUNS_DIV = By.XPATH, ".//span[contains(text(),'Булки')]/parent::div"
+    # Кнопка Соусы
+    SAUCES_DIV = By.XPATH, ".//span[contains(text(),'Соусы')]/parent::div"
+    # Кнопка Начинки
+    FILLINGS_DIV = By.XPATH, ".//span[contains(text(),'Начинки')]/parent::div"
+
     # Заголовок Булки
     BUNS_HEADER = By.XPATH, ".//h2[contains(text(),'Булки')]"
     # Заголовок Соусы

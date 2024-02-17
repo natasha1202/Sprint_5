@@ -1,6 +1,8 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import TestLocators
+from page_url import PageUrl
+
 
 class TestLogout:
 
@@ -34,4 +36,4 @@ class TestLogout:
             TestLocators.LOGIN_FORM_LOGIN_BUTTON
         ))
 
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
+        assert driver.current_url == PageUrl.LOGIN_PAGE_URL

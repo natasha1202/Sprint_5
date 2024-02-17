@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import TestLocators
+from page_url import PageUrl
 
 
 class TestNavigation:
@@ -29,7 +30,7 @@ class TestNavigation:
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
             TestLocators.PROFILE_BUTTON_PROFILE
         ))
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/account/profile"
+        assert driver.current_url == PageUrl.PROFILE_PAGE_URL
 
     def test_profile_to_constructor_link(self, driver, registered_user):
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
@@ -61,7 +62,7 @@ class TestNavigation:
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
             TestLocators.FORM_BURGER_TEXT
         ))
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/"
+        assert driver.current_url == PageUrl.MAIN_PAGE_URL
 
     def test_profile_to_dashboard_link(self, driver, registered_user):
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
@@ -93,4 +94,4 @@ class TestNavigation:
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
             TestLocators.FORM_BURGER_TEXT
         ))
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/"
+        assert driver.current_url == PageUrl.MAIN_PAGE_URL

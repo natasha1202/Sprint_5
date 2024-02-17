@@ -1,12 +1,13 @@
 import pytest
 import random
 from selenium import webdriver
+from page_url import PageUrl
 
 
 @pytest.fixture(scope='function')
 def driver():
     driver = webdriver.Chrome()
-    driver.get("https://stellarburgers.nomoreparties.site/")
+    driver.get(PageUrl.MAIN_PAGE_URL)
     yield driver
     driver.quit()
 

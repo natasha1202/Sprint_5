@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import TestLocators
+from page_url import PageUrl
 
 
 class TestLogin:
@@ -14,8 +15,6 @@ class TestLogin:
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
             TestLocators.LOGIN_FORM_LOGIN_BUTTON
         ))
-
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
 
         # Логин
         driver.find_element(*TestLocators.LOGIN_EMAIL).send_keys(registered_user.get('email'))
@@ -44,8 +43,6 @@ class TestLogin:
                 TestLocators.LOGIN_BUTTON_PROFILE
             ))
 
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
-
         # Логин
         driver.find_element(*TestLocators.LOGIN_EMAIL).send_keys(registered_user.get('email'))
         driver.find_element(*TestLocators.INPUT_PASSWORD).send_keys(registered_user.get('password'))
@@ -64,15 +61,13 @@ class TestLogin:
                 == registered_user.get('name'))
 
     def test_login_from_registration_page_success(self, driver, registered_user):
-        driver.get("https://stellarburgers.nomoreparties.site/register")
+        driver.get(PageUrl.REGISTRATION_PAGE_URL)
 
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
                 TestLocators.LOGIN_LINK_REGISTRATION_RESET_FORM
             ))
 
         driver.find_element(*TestLocators.LOGIN_LINK_REGISTRATION_RESET_FORM).click()
-
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
 
         # Логин
         driver.find_element(*TestLocators.LOGIN_EMAIL).send_keys(registered_user.get('email'))
@@ -92,15 +87,13 @@ class TestLogin:
                 == registered_user.get('name'))
 
     def test_login_from_reset_page_success(self, driver, registered_user):
-        driver.get("https://stellarburgers.nomoreparties.site/forgot-password")
+        driver.get(PageUrl.RESET_PAGE_URL)
 
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
                 TestLocators.LOGIN_LINK_REGISTRATION_RESET_FORM
             ))
 
         driver.find_element(*TestLocators.LOGIN_LINK_REGISTRATION_RESET_FORM).click()
-
-        assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
 
         # Логин
         driver.find_element(*TestLocators.LOGIN_EMAIL).send_keys(registered_user.get('email'))

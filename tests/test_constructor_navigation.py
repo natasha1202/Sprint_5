@@ -14,7 +14,9 @@ class TestConstructorNavigation:
         driver.find_element(*TestLocators.FILLINGS_TAB).click()
         driver.find_element(*TestLocators.BUNS_TAB).click()
 
-        assert driver.find_element(*TestLocators.BUNS_HEADER).is_displayed()
+        WebDriverWait(driver, 3)
+
+        assert "tab_tab_type_current" in driver.find_element(*TestLocators.BUNS_DIV).get_dom_attribute("class")
 
     def test_navigation_to_sauces(self, driver):
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
@@ -24,7 +26,7 @@ class TestConstructorNavigation:
         driver.find_element(*TestLocators.FILLINGS_TAB).click()
         driver.find_element(*TestLocators.SAUCES_TAB).click()
 
-        assert driver.find_element(*TestLocators.SAUCES_HEADER).is_displayed()
+        assert "tab_tab_type_current" in driver.find_element(*TestLocators.SAUCES_DIV).get_attribute("class")
 
     def test_navigation_to_fillings(self, driver):
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
@@ -32,4 +34,4 @@ class TestConstructorNavigation:
         ))
 
         driver.find_element(*TestLocators.FILLINGS_TAB).click()
-        assert driver.find_element(*TestLocators.FILLINGS_HEADER).is_displayed()
+        assert "tab_tab_type_current" in driver.find_element(*TestLocators.FILLINGS_DIV).get_attribute("class")
